@@ -12,6 +12,29 @@ body {
    margin: 0;
 }
 
+#playButton {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #1E90FF; /* 道奇蓝 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    display: block;
+}
+
+#playButton:hover {
+    background-color: #1C86EE; /* 更深的蓝色 */
+}
+
+#playButton:active {
+    background-color: #187bcd; /* 按下时的蓝色 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 a {
    color: #ebf7f4;
 }
