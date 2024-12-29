@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>生日快乐</title>
@@ -9,28 +8,54 @@
 </head>
 
 <body>
-    <!-- github 可以删除-->
-
     <!-- 头像 -->
     <div class="cs">
-        <img src="https://pic.imgdb.cn/item/67695c94d0e0a243d4e8a16f.jpg" id="logo">
+        <img src="https://pic.imgdb.cn/item/67695c94d0e0a243d4e8a16f.jpg" id="logo" alt="头像" />
     </div>
-    <canvas class="canvas" width="1820" height="905"></canvas>
+
+    <canvas class="canvas" width="1820" height="905">
+        您的浏览器不支持 canvas 标签
+    </canvas>
+
     <!-- 出生计时 -->
     <p class="text">
         Ltt来到这个世界已经 <br />
         <span id="span_dt_dt"></span>
     </p>
-</body>
-<!--  设定出生日期 -->
-<script type="text/javascript" src="time.js"></script>
-<!-- canvas动画 -->
-<script type="text/javascript" src="index.js"></script>
-<!-- 背景音乐 -->
-<audio id="music" src="./happybirthday.mp3" autoplay muted loop></audio>该浏览器不支持audio属性</audio>
-<!-- copyright -->
-<footer style="color: #BBE1FA; text-align:center;">
-    <font size="2" color=#BBE1FA>©2024 生日快乐 &nbsp 我的朋友</font>
-</footer>
 
+    <!-- 添加按钮来触发音乐播放 -->
+    <button id="playButton">点击播放音乐</button>
+
+    <!-- 设定出生日期 -->
+    <script src="time.js"></script>
+    <!-- canvas 动画 -->
+    <script src="index.js"></script>
+    
+    <!-- 背景音乐 (去掉 muted、autoplay 改为手动点击播放) -->
+    <audio id="music" src="./happybirthday.mp3" loop>
+        您的浏览器不支持 audio 标签
+    </audio>
+    
+    <!-- 使用脚本来绑定按钮点击事件，从而绕过自动播放限制 -->
+    <script>
+        const playButton = document.getElementById("playButton");
+        const music = document.getElementById("music");
+
+        playButton.addEventListener("click", () => {
+            music.play()
+                .then(() => {
+                    console.log("音乐已开始播放");
+                })
+                .catch(err => {
+                    console.error("播放失败:", err);
+                });
+        });
+    </script>
+
+    <!-- copyright -->
+    <footer style="color: #BBE1FA; text-align:center;">
+        <font size="2" color="#BBE1FA">©2024 生日快乐 &nbsp; 我的朋友</font>
+    </footer>
+
+</body>
 </html>
