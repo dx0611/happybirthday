@@ -22,7 +22,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
+    margin: 20px auto;
     display: block; /* 改为 inline-block，避免居中 */
     /* 可选：设置固定宽度或其他布局属性 */
 }
