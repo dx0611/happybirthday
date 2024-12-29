@@ -1,30 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <title>生日快乐</title>
-    <!-- 添加按钮来触发音乐播放 -->
-    <button id="playButton">点击播放音乐</button>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 内部样式表，用于设计蓝色主题的按钮 */
+        #playButton {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #1E90FF; /* 道奇蓝 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            display: block;
+        }
+
+        #playButton:hover {
+            background-color: #1C86EE; /* 更深的蓝色 */
+        }
+
+        #playButton:active {
+            background-color: #187bcd; /* 按下时的蓝色 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 
 <body>
     <!-- 头像 -->
     <div class="cs">
-        <img src="https://pic.imgdb.cn/item/67695c94d0e0a243d4e8a16f.jpg" id="logo" alt="头像" />
+        <img src="https://pic.imgdb.cn/item/67695c94d0e0a243d4e8a16f.jpg" id="logo" alt="头像">
     </div>
 
+    <!-- Canvas -->
     <canvas class="canvas" width="1820" height="905">
         您的浏览器不支持 canvas 标签
     </canvas>
 
     <!-- 出生计时 -->
     <p class="text">
-        Ltt来到这个世界已经 <br />
+        Ltt来到这个世界已经 <br>
         <span id="span_dt_dt"></span>
     </p>
+
+    <!-- 添加按钮来触发音乐播放 -->
+    <button id="playButton">点击播放音乐</button>
 
     <!-- 设定出生日期 -->
     <script src="time.js"></script>
@@ -38,24 +64,29 @@
     
     <!-- 使用脚本来绑定按钮点击事件，从而绕过自动播放限制 -->
     <script>
-        const playButton = document.getElementById("playButton");
-        const music = document.getElementById("music");
+        // 确保 DOM 元素已加载
+        document.addEventListener("DOMContentLoaded", () => {
+            const playButton = document.getElementById("playButton");
+            const music = document.getElementById("music");
 
-        playButton.addEventListener("click", () => {
-            music.play()
-                .then(() => {
-                    console.log("音乐已开始播放");
-                })
-                .catch(err => {
-                    console.error("播放失败:", err);
-                });
+            playButton.addEventListener("click", () => {
+                music.play()
+                    .then(() => {
+                        console.log("音乐已开始播放");
+                        // 可选：隐藏按钮以防重复点击
+                        playButton.style.display = 'none';
+                    })
+                    .catch(err => {
+                        console.error("播放失败:", err);
+                        alert("无法播放音乐，请检查音频文件或浏览器设置。");
+                    });
+            });
         });
     </script>
 
     <!-- copyright -->
-    <footer style="color: #BBE1FA; text-align:center;">
-        <font size="2" color="#BBE1FA">©2024 生日快乐 &nbsp; 我的朋友</font>
+    <footer>
+        <span style="font-size: 12px;">©2024 生日快乐 &nbsp; 我的朋友</span>
     </footer>
-
 </body>
 </html>
